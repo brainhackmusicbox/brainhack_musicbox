@@ -2,19 +2,14 @@
 
 #include "ofMain.h"
 
-class MyClass{
-
-public:
-	void set(int _i, float _f){
-		i = _i; f = _f;
-	};
-
-	int i;
-	float f;
-};
-
 class ofApp : public ofBaseApp{
 	public:
+		ofImage image;
+		ofMesh mesh;
+		ofEasyCam easyCam;
+
+		vector<ofVec3f> offsets;
+
 		void setup();
 		void update();
 		void draw();
