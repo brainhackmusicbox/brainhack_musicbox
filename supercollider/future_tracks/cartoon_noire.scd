@@ -3,11 +3,10 @@ GUI.stethoscope.defaultServer.boot;
 (
 o = Server.local.options;
 //o.device ="ASIO4ALL"; //must die
-o.sampleRate= 96000;
+o.sampleRate= 48000;
 //o.blockSize = 8192*2;
 o.memSize = 8192*64;
-//o.threads see supernova
-o.dump;
+// o.dump;
 
 s.boot;
 )
@@ -19,13 +18,13 @@ s.scope;
 
 
 (
-~outfile = "/media/data/render4.wav";
+//~outfile = "/media/data/render4.wav";
 //~outfile = "D:\\test.wav";
-s.waitForBoot({
-	File.exists(~outfile).if(
-	{("\n\n% already exists".format(~outfile)).postln},
-	{s.prepareForRecord(~outfile); s.sync; s.record});
-});
+// s.waitForBoot({
+// 	File.exists(~outfile).if(
+// 		{("\n\n% already exists".format(~outfile)).postln},
+// 	{s.prepareForRecord(~outfile); s.sync; s.record});
+// });
 
 
 
