@@ -3,7 +3,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 project(01_math)
 
-set(GTEST_DIR /home/sbobrytskyy/googletest/googletest)
+set(GTEST_DIR ~/googletest/googletest)
 
 include_directories(${GTEST_DIR}/include ${GTEST_DIR})
 
