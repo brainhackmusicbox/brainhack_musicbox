@@ -7,7 +7,6 @@ set(GTEST_DIR ~/googletest/googletest)
 
 include_directories(${GTEST_DIR}/include ${GTEST_DIR})
 
-#add_executable(01_math main.cpp)
-add_executable(01_math_test main.cpp gtest.cpp ${GTEST_DIR}/src/gtest-all.cc math.h)
+add_executable(01_math_test main.cpp gtest.cpp ${GTEST_DIR}/src/gtest-all.cc math_problems.h)
 
 target_link_libraries(01_math_test gtest pthread)
