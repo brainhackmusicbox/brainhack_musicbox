@@ -134,11 +134,13 @@ vector<int> armstrong(){
         for (int second_digit = 0; second_digit < 9; ++second_digit) {
             for (int third_digit = 0; third_digit < 9; ++third_digit) {
                 int cubes_sum = cube(first_digit) + cube(second_digit) + cube(third_digit);
-                int number = first_digit*100 + second_digit*10 + third_digit;       // XYZ = X*100 + Y*10 + Z
+
+                // XYZ = X*100 + Y*10 + Z
+                int number = first_digit*100 + second_digit*10 + third_digit;
 
                 if(cubes_sum == number) result.emplace_back(number);
             }
-            
+
         }
     }
 
@@ -177,7 +179,42 @@ int largest_prime_factor(int number){
 // Write a program that displays the normal binary representations, Gray code
 // representations, and decoded Gray code values for all 5-bit numbers.
 
+// all 5-bit numbers == 1..32
+bit5 dec2bin(unsigned int decimal){
+    return bit5(decimal);
+};
 
 
+bit5 bin2gray(bit5 bin){
+//    cout << "bin: " << bin << "\n";
+
+    bit5 shifted = bin >> 1;
+//    cout << "shifted: " << shifted << "\n";
+
+    bit5 gray = bin ^ shifted;
+//    cout << "result: " << gray << "\n";
+    return gray;
+};
 
 
+bit5 gray2bin(bit5 gray){
+    // The Most Significant Bit (MSB) of the gray code is always equal to the MSB of the given binary code.
+    // Other bits of the output gray code can be obtained by XORing binary code bit at that index and previous index.
+//    cout << "gray: " << gray << "\n";
+//    cout << "1U << 5: " << (1U << 5) << "\n";
+
+    for (unsigned int bit = 1U << 5; bit > 0; bit >>= 1) {
+//        cout << "bit: " << bit5(bit);
+//        cout << "\t gray: "<< gray;
+//        cout << "\t\t gray & bit5(" << bit << "):\t" << (gray & bit5(bit));
+
+        if(gray.to_ulong() & bit){
+            gray ^= bit >> 1;
+//            cout<< "\t True" << "\t result: " << gray << "\n";
+        }else{
+//            cout<< "\n";
+        };
+    }
+
+    return gray;
+};

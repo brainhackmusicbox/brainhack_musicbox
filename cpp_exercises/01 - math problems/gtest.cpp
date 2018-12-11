@@ -188,7 +188,22 @@ TEST(math_09_Prime_factors, Max_5){
     EXPECT_EQ(largest_prime_factor(143), 13);
 }
 // =====================================================================================================================
+// 10. Gray code
+TEST(math_10_Gray_code, dec2bin_1){
+    EXPECT_EQ(dec2bin(3), 0b00011);
+}
 
+TEST(math_10_Gray_code, dec2bin_2){
+    EXPECT_EQ(dec2bin(13), 0b01101);
+}
+
+TEST(math_10_Gray_code, bin2gray){
+    EXPECT_EQ(bin2gray(dec2bin(13)), 0b01011);
+}
+
+TEST(math_10_Gray_code, gray2bin){
+    EXPECT_EQ(gray2bin(0b01011), 0b01101);
+}
 
 
 // =====================================================================================================================
