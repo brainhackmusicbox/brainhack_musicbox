@@ -1,12 +1,20 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxGui.h"
 
 class ofApp : public ofBaseApp{
 	public:
 		ofImage image;
 		ofMesh mesh;
 		ofEasyCam easyCam;
+
+		ofxFloatSlider camX;
+		ofxFloatSlider camY;
+		ofxFloatSlider camZ;
+
+
+		ofxPanel gui;
 
 		vector<ofVec3f> offsets;
 

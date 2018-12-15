@@ -18,6 +18,11 @@ void ofApp::setup(){
     image.load("head.jpg");
     image.resize(200, 200);
 
+    gui.setup();
+    gui.add(camX.setup("camX", 0, -1500, 1500));
+    gui.add(camY.setup("camY", 0, -1500, 1500));
+    gui.add(camZ.setup("camZ", 0, -1500, 1500));
+
     mesh.setMode(OF_PRIMITIVE_LINES);
     mesh.enableColors();
     mesh.enableIndices();
@@ -104,14 +109,39 @@ void ofApp::draw(){
     ofColor edgeColor(0, 0, 0);
     ofBackgroundGradient(centerColor, edgeColor, OF_GRADIENT_CIRCULAR);
     
-    // easyCam.begin();
-    //     ofPushMatrix();
-    //         ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2);
-    //         mesh.draw();
-    //     ofPopMatrix();
-    // easyCam.end();
-    mesh.draw();
+    gui.draw();
 
+    // ofSetColor(ofColor("green"));
+    // ofCircle(camX, camY, camZ, 10);
+
+
+    
+    easyCam.begin();
+        ofPushMatrix();
+            
+            ofTranslate(-ofGetWidth()/2, ofGetHeight()/2);
+            ofRotateDeg(180, 0, 0, 1);
+            ofRotateDeg(180, 0, 1, 0);
+
+            //TODO: move to separate function
+            int axis_len(100);
+            ofPoint O(0, 0, 0), OX(axis_len, 0, 0), OY(0, axis_len, 0), OZ(0, 0, axis_len);
+            ofSetLineWidth(10);
+
+            ofSetColor(ofColor::red);
+            ofDrawLine(O, OX);
+
+            ofSetColor(ofColor::green);
+            ofDrawLine(O, OY);
+
+            ofSetColor(ofColor::blue);
+            ofDrawLine(O, OZ);
+
+            ofSetLineWidth(1);
+            mesh.draw();
+        ofPopMatrix();        
+    easyCam.end();
+    cout << "cam distance: " << easyCam.getDistance() << "\n";
 }
 
 //--------------------------------------------------------------
@@ -131,7 +161,7 @@ void ofApp::mouseMoved(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-
+    cout << "X: " << easyCam.getX() << " Y: " << easyCam.getY() << " Z: " << easyCam.getZ() << "\n";
 }
 
 //--------------------------------------------------------------
