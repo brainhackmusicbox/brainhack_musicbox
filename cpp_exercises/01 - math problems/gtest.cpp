@@ -205,6 +205,14 @@ TEST(math_10_Gray_code, gray2bin){
     EXPECT_EQ(gray2bin(0b01011), 0b01101);
 }
 
+// 11. Converting numerical values to Roman
+TEST(math_11_Roman, Positive_1){
+    EXPECT_EQ(dec2roman(13), "XIII");
+}
+
+TEST(math_11_Roman, Positive_2){
+    EXPECT_EQ(dec2roman(1994), "MCMXCIV");
+}
 
 // =====================================================================================================================
 int main(int argc, char **argv) {
