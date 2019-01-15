@@ -9,7 +9,7 @@ for file in $(ls *.mp4);
 		echo "$file: vidstabdetect"
 		echo "=================================================="
 		echo
-		ffmpeg -i $file -vf vidstabdetect=shakiness=10:accuracy=10 -an -f null -
+		ffmpeg -i $file -vf vidstabdetect=stepsize=6:shakiness=8:accuracy=9 -an -f null -
 
 		echo
 		echo "=================================================="
@@ -17,7 +17,7 @@ for file in $(ls *.mp4);
 		echo "=================================================="
 		echo
 
-		ffmpeg -i $file -vf vidstabtransform=zoom=5:smoothing=50 -vcodec libx265 -x265-params crf=15 -preset ultrafast -tune grain -an ${file::-4}_deshake.mp4
+		ffmpeg -i $file -vf vidstabtransform=optzoom=2:smoothing=50 -vcodec libx265 -preset ultrafast -x265-params crf=15 -tune grain -an ${file::-4}_deshake.mp4
 
 		del transforms.trf
 done
