@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <bitset>
+#include <map>
+#include <exception>
 using namespace std;
 
 // 1. Sum of naturals divisible by 3 and 5
@@ -43,9 +45,13 @@ vector<int> prime_factors(int number);
 int largest_prime_factor(int number);
 
 // 10. Gray code
-#define bit5 bitset<5>
+typedef bitset<5> bit5;
 bit5 dec2bin(unsigned int decimal);
 bit5 bin2gray(bit5 bin);
 bit5 gray2bin(bit5 gray);
+
+// 11. Converting numerical values to Roman
+string dec2roman(unsigned int decimal);
+
 
 #endif //INC_01_MATH_MATH_H
