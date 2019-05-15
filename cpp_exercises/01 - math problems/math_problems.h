@@ -53,5 +53,7 @@ bit5 gray2bin(bit5 gray);
 // 11. Converting numerical values to Roman
 string dec2roman(unsigned int decimal);
 
+// 12. Largest Collatz sequence
+pair<int, long> longest_collatz(int limit);
 
 #endif //INC_01_MATH_MATH_H
