@@ -249,3 +249,36 @@ string dec2roman(unsigned int decimal){
     };
     return result;
 };
+
+// =====================================================================================================================
+// 12. Largest Collatz sequence
+pair<int, long> longest_collatz(int limit)
+{
+    vector<int> cache;
+
+    for (int i = 0; i <= limit; ++i) {
+        int last_number =  i;
+        int length = 0;
+
+        while (last_number > 1){
+            if(last_number < i)
+            {
+                length += cache[last_number];
+                break;
+            }
+            else
+                {
+                    last_number = last_number % 2
+                                  ? last_number * 3 + 1
+                                  : last_number / 2;
+                    ++length;
+                };
+        };
+        cache.emplace_back(length);
+    }
+
+    int max = *max_element(cache.begin(), cache.end());
+    long index = distance(cache.begin(), max_element(cache.begin(), cache.end()));
+
+    return make_pair(max, index);
+};

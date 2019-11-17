@@ -205,6 +205,7 @@ TEST(math_10_Gray_code, gray2bin){
     EXPECT_EQ(gray2bin(0b01011), 0b01101);
 }
 
+// =====================================================================================================================
 // 11. Converting numerical values to Roman
 TEST(math_11_Roman, Positive_1){
     EXPECT_EQ(dec2roman(13), "XIII");
@@ -213,6 +214,17 @@ TEST(math_11_Roman, Positive_1){
 TEST(math_11_Roman, Positive_2){
     EXPECT_EQ(dec2roman(1994), "MCMXCIV");
 }
+
+// =====================================================================================================================
+// 12. Largest Collatz sequence
+TEST(math_12_Collatz, longest_collatz_sequence){
+    int limit = 1000000;
+    pair<int, long> expected_result = {475, 910107};
+
+    EXPECT_EQ(expected_result, longest_collatz(limit));
+}
+
+
 
 // =====================================================================================================================
 int main(int argc, char **argv) {
